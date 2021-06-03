@@ -1,0 +1,8 @@
+-   id: jscpd
+    name: jscpd
+    entry: jscpd --ignore "**/*.min.js,**/*.map,**/node_modules,**/tests" --reporters consoleFull --ignoreCase true
+    language: node
+    'types': [text]
+    args: []
+    require_serial: false
+    additional_dependencies: ["jscpd@0.1.1"]
