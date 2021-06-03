@@ -1,0 +1,30 @@
+name: main
+on:
+  push:
+    branches: [main]
+  schedule:
+    # Run once a week every Tuesday
+    - cron: '15 8 * * 2'
+
+jobs:
+  build:
+    name: main
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v1
+      - run: pip install pre-commit-mirror-maker
+      - run: git config --global user.name 'Github Actions'
+      - run:
+          git config --global user.email
+          '41898282+github-actions[bot]@users.noreply.github.com'
+      - run:
+          pre-commit-mirror . --language node --package-name=jscpd --types=text
+          --entry='jscpd --ignore
+          "**/*.min.js,**/*.map,**/node_modules,**/tests" --reporters
+          consoleFull --ignoreCase true' --id=jscpd
+      - run: |
+          git remote set-url origin https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY
+          git push origin HEAD:refs/heads/main --tags
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
