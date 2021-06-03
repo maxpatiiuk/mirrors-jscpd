@@ -5,4 +5,4 @@
     'types': [text]
     args: []
     require_serial: false
-    additional_dependencies: ["jscpd@0.6.22"]
+    additional_dependencies: ["jscpd@0.6.23"]
