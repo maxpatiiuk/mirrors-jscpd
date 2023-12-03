@@ -11,7 +11,7 @@ Mirror of jscpd package for pre-commit.
 Add this to your `.pre-commit-config.yaml`:
 
 ```yaml
-- repo: https://github.com/maxxxxxdlp/mirrors-jscpd
+- repo: https://github.com/maxpatiiuk/mirrors-jscpd
   rev: '' # Use the sha / tag you want to point at
   hooks:
     - id: jscpd
